@@ -31,15 +31,15 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: win32-x64
-          path: out/make/squirrel.windows/x64/musicman-setup.exe
+          path: out/make/squirrel.windows/x64/chromedino-setup.exe
       - uses: actions/upload-artifact@v2
         with:
           name: win32-arm64
-          path: out/make/squirrel.windows/arm64/musicman-setup.exe
+          path: out/make/squirrel.windows/arm64/chromedino-setup.exe
       - uses: actions/upload-artifact@v2
         with:
           name: win32-ia32
-          path: out/make/squirrel.windows/ia32/musicman-setup.exe
+          path: out/make/squirrel.windows/ia32/chromedino-setup.exe
   build-linux:
     runs-on: ubuntu-20.04
     steps:
@@ -56,22 +56,22 @@ jobs:
           npx electron-forge package --arch=arm64 --platform=linux
           npx electron-forge package --arch=armv7l --platform=linux
           cd out
-          zip -ryv musicman-linux-x64.zip musicman-linux-x64
-          zip -ryv musicman-linux-arm64.zip musicman-linux-arm64
-          zip -ryv musicman-linux-armv7l.zip musicman-linux-armv7l
+          zip -ryv chromedino-linux-x64.zip chromedino-linux-x64
+          zip -ryv chromedino-linux-arm64.zip chromedino-linux-arm64
+          zip -ryv chromedino-linux-armv7l.zip chromedino-linux-armv7l
           cd ..
       - uses: actions/upload-artifact@v2
         with:
           name: linux-x64
-          path: out/musicman-linux-x64.zip
+          path: out/chromedino-linux-x64.zip
       - uses: actions/upload-artifact@v2
         with:
           name: linux-arm64
-          path: out/musicman-linux-arm64.zip
+          path: out/chromedino-linux-arm64.zip
       - uses: actions/upload-artifact@v2
         with:
           name: linux-armv7l
-          path: out/musicman-linux-armv7l.zip
+          path: out/chromedino-linux-armv7l.zip
   build-macos:
     runs-on: ubuntu-20.04
     steps:
@@ -86,17 +86,17 @@ jobs:
           npx electron-forge package --arch=x64 --platform=darwin
           npx electron-forge package --arch=arm64 --platform=darwin
           cd out
-          zip -ryv musicman-darwin-x64.zip musicman-darwin-x64
-          zip -ryv musicman-darwin-arm64.zip musicman-darwin-arm64
+          zip -ryv chromedino-darwin-x64.zip chromedino-darwin-x64
+          zip -ryv chromedino-darwin-arm64.zip chromedino-darwin-arm64
           cd ..
       - uses: actions/upload-artifact@v2
         with:
           name: darwin-x64
-          path: out/musicman-darwin-x64.zip
+          path: out/chromedino-darwin-x64.zip
       - uses: actions/upload-artifact@v2
         with:
           name: darwin-arm64
-          path: out/musicman-darwin-arm64.zip
+          path: out/chromedino-darwin-arm64.zip
   release:
     runs-on: ubuntu-latest
     needs: [build-windows, build-macos, build-linux]
@@ -117,62 +117,62 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./darwin-x64/musicman-darwin-x64.zip
-        asset_name: musicman-darwin-x64.zip
+        asset_path: ./darwin-x64/chromedino-darwin-x64.zip
+        asset_name: chromedino-darwin-x64.zip
         asset_content_type: application/zip
     - uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./darwin-arm64/musicman-darwin-arm64.zip
-        asset_name: musicman-darwin-arm64.zip
+        asset_path: ./darwin-arm64/chromedino-darwin-arm64.zip
+        asset_name: chromedino-darwin-arm64.zip
         asset_content_type: application/zip
     - uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./linux-x64/musicman-linux-x64.zip
-        asset_name: musicman-linux-x64.zip
+        asset_path: ./linux-x64/chromedino-linux-x64.zip
+        asset_name: chromedino-linux-x64.zip
         asset_content_type: application/zip
     - uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./linux-arm64/musicman-linux-arm64.zip
-        asset_name: musicman-linux-arm64.zip
+        asset_path: ./linux-arm64/chromedino-linux-arm64.zip
+        asset_name: chromedino-linux-arm64.zip
         asset_content_type: application/zip
     - uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./linux-armv7l/musicman-linux-armv7l.zip
-        asset_name: musicman-linux-armv7l.zip
+        asset_path: ./linux-armv7l/chromedino-linux-armv7l.zip
+        asset_name: chromedino-linux-armv7l.zip
         asset_content_type: application/zip
     - uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./win32-x64/musicman-setup.exe
-        asset_name: musicman-win32-x64.exe
+        asset_path: ./win32-x64/chromedino-setup.exe
+        asset_name: chromedino-win32-x64.exe
         asset_content_type: application/octet-stream
     - uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./win32-arm64/musicman-setup.exe
-        asset_name: musicman-win32-arm64.exe
+        asset_path: ./win32-arm64/chromedino-setup.exe
+        asset_name: chromedino-win32-arm64.exe
         asset_content_type: application/octet-stream
     - uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./win32-ia32/musicman-setup.exe
-        asset_name: musicman-win32-ia32.exe
+        asset_path: ./win32-ia32/chromedino-setup.exe
+        asset_name: chromedino-win32-ia32.exe
         asset_content_type: application/octet-stream
