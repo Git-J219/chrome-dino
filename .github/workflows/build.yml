@@ -85,8 +85,6 @@ jobs:
           npm ci
           npx electron-forge package --arch=x64 --platform=darwin
           npx electron-forge package --arch=arm64 --platform=darwin
-          cp 3rdParty out/musicman-darwin-x64 -r
-          cp 3rdParty out/musicman-darwin-arm64 -r
           cd out
           zip -ryv musicman-darwin-x64.zip musicman-darwin-x64
           zip -ryv musicman-darwin-arm64.zip musicman-darwin-arm64
