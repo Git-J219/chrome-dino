@@ -56,9 +56,9 @@ jobs:
           npx electron-forge package --arch=arm64 --platform=linux
           npx electron-forge package --arch=armv7l --platform=linux
           cd out
-          zip -ryv chromedino-linux-x64.zip chromedino-linux-x64
-          zip -ryv chromedino-linux-arm64.zip chromedino-linux-arm64
-          zip -ryv chromedino-linux-armv7l.zip chromedino-linux-armv7l
+          zip -ryv chromedino-linux-x64.zip "Chrome Dino Spiel+-linux-x64
+          zip -ryv chromedino-linux-arm64.zip "Chrome Dino Spiel+-linux-arm64
+          zip -ryv chromedino-linux-armv7l.zip "Chrome Dino Spiel+-linux-armv7l
           cd ..
       - uses: actions/upload-artifact@v2
         with:
@@ -86,8 +86,8 @@ jobs:
           npx electron-forge package --arch=x64 --platform=darwin
           npx electron-forge package --arch=arm64 --platform=darwin
           cd out
-          zip -ryv chromedino-darwin-x64.zip chromedino-darwin-x64
-          zip -ryv chromedino-darwin-arm64.zip chromedino-darwin-arm64
+          zip -ryv chromedino-darwin-x64.zip "Chrome Dino Spiel+-darwin-x64
+          zip -ryv chromedino-darwin-arm64.zip "Chrome Dino Spiel+-darwin-arm64
           cd ..
       - uses: actions/upload-artifact@v2
         with:
