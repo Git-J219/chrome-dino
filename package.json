@@ -15,7 +15,15 @@
             "packagerConfig": {
                 "icon": "src/icons/icon",
                 "appCopyright": "Copyright (c) 2021 Git-J219, All rights reserved"
-            }
+            },
+            "makers": [
+                {
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "setupExe": "musicman-setup.exe"
+                    }
+                }
+            ]
         }
     },
     "dependencies": {
