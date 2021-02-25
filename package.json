@@ -1,0 +1,28 @@
+{
+    "name": "chromedino",
+    "productName": "Chrome Dino Spiel+",
+    "version": "1.0.0",
+    "description": "My Electron application description",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "electron-forge start"
+    },
+    "author": "Git-J219",
+    "keywords": [],
+    "license": "MIT",
+    "config": {
+        "forge": {
+            "packagerConfig": {
+                "icon": "src/icons/icon",
+                "appCopyright": "Copyright (c) 2021 Git-J219, All rights reserved"
+            }
+        }
+    },
+    "dependencies": {
+        "electron-squirrel-startup": "^1.0.0"
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.54",
+        "electron": "^11.3.0"
+    }
+}
