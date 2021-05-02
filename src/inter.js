@@ -21,7 +21,10 @@ document.querySelector("#disableNight").addEventListener("click", () => {
   document.querySelector("#disableNightCheck").style.display = nightDisabled ? "inline" : "";
   localStorage.setItem("nightOff", nightDisabled ? "true" : "false");
 });
-
+  document.querySelector("iframe").focus();
+window.addEventListener("click", () => {
+  document.querySelector("iframe").focus();
+});
 function dataInitialized(){
   if(nightDisabled){
     contentWndIframe.Runner.instance_.invert(true);
