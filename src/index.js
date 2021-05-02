@@ -61,7 +61,7 @@ const createWindow = () => {
             backgroundThrottling: false
         },
         icon: path.join(__dirname, 'icons', 'icon.png'),
-        show: true
+        show: false
     };
     loading = new BrowserWindow({ transparent: true, width: 580, height: 140, frame: false, webPreferences: { backgroundThrottling: false, contextIsolation: true }, show: false });
     loading.setMinimumSize(580, 140);
