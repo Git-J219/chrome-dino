@@ -28,7 +28,6 @@ function dataInitialized(){
   }
   contentWndIframe.Runner.instance_.doNight = !nightDisabled;
   document.querySelector("#disableNightCheck").style.display = nightDisabled ? "inline" : "";
-  localStorage.setItem("nightOff", nightDisabled ? "true" : "false");
 }
 if(localStorage.getItem("nightOff") === "true") {
   nightDisabled = true;
