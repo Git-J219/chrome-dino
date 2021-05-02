@@ -183,3 +183,11 @@ body {
 .winactive #app_title {
     color: rgb(155, 155, 155);
 }
+
+.endRight{
+  text-align:right;
+}
+
+#disableNightCheck{
+  display:none;
+}

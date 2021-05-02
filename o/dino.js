@@ -396,6 +396,7 @@ Runner.prototype = {
       this.highestScore = 0;
     }
     this.distanceMeter.setHighScore(this.highestScore);
+    parent.dataInitialized();
   },
 
   /**
@@ -799,6 +800,8 @@ Runner.prototype = {
 
   lifes: LIFE_INIT,
   noGameOver: false,
+  badGame: false,
+  doNight: true,
   lastHit: new Date(),
 
   /**
@@ -835,11 +838,12 @@ Runner.prototype = {
     }
 
     // Update the high score.
-    if (this.distanceRan > this.highestScore) {
+    if (this.distanceRan > this.highestScore && !this.badGame) {
       this.highestScore = Math.ceil(this.distanceRan);
       localStorage.setItem('highScore', this.highestScore);
       this.distanceMeter.setHighScore(this.highestScore);
     }
+      this.badGame = false;
 
     // Reset the time clock.
     this.time = getTimeStamp();
@@ -961,7 +965,7 @@ Runner.prototype = {
       document.body.classList.toggle(Runner.classes.INVERTED, false);
       this.invertTimer = 0;
       this.inverted = false;
-    } else {
+    } else if(this.doNight) {
       this.inverted = document.body.classList.toggle(Runner.classes.INVERTED,
           this.invertTrigger);
     }

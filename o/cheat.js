@@ -48,6 +48,7 @@ window.addEventListener('keydown', (e) => {
         case 9:
             if (e.key === 'b' && Runner.instance_) {
                 Runner.instance_.noGameOver = !Runner.instance_.noGameOver;
+                Runner.instance_.badGame = true;
                 Runner.instance_.lastHit = new Date();
             }
             cheatButtonState = 0;
